@@ -1,0 +1,127 @@
+A Swing component is a reusable graphical object that represents a part of a user interface, such as a button, label, text field, or text area.
+A JPanel is a lightweight container used to organize and group Swing components inside another container, such as a JFrame.
+
+Component Hierarchy
+JFrame
+│
+└── JPanel
+      │
+      ├── JLabel
+      ├── JTextField
+      ├── JTextArea
+      └── JButton
+
+Notice that: JFrame is the main window.
+             JPanel organizes components.
+             Components are added to the panel.
+             The panel is then added to the frame.
+
+What is JPanel?
+A JPanel is simply a container.
+It doesn't usually display information itself. Instead, it holds and organizes other components.
+Example: JPanel panel = new JPanel();
+To place it inside a window: frame.add(panel);
+
+What is JLabel?
+A JLabel displays text or an image.
+Example: JLabel label = new JLabel("Student Name:");
+Output: Student Name:
+A label displays information—it does not accept user input.
+
+What is JTextField?
+A JTextField allows the user to enter a single line of text.
+Example: JTextField field = new JTextField(15);
+The number 15 specifies the preferred width in columns.
+Example: Name:
+         [_______________]
+         What is JTextArea?
+A JTextArea allows the user to enter multiple lines of text.
+Example: JTextArea area = new JTextArea(5, 20);
+The numbers represent: 5 rows, 20 columns
+Example: Comments: __________________
+                   __________________
+                   __________________
+                   __________________
+                   __________________
+
+What is JButton?
+A JButton represents a clickable button.
+Example: JButton button = new JButton("Submit");
+Output: [ Submit ]
+Today, the button won't do anything yet. In the next GUI lecture, we'll learn how to respond to button clicks using event listeners.
+
+Adding Components
+Suppose we create:
+
+JPanel panel = new JPanel();
+JLabel label = new JLabel("Name:");
+JTextField field = new JTextField(15);
+JButton button = new JButton("Save");
+
+Now add them to the panel:
+
+panel.add(label);
+panel.add(field);
+panel.add(button);
+
+Finally:
+
+frame.add(panel);
+
+Everything appears inside the window.
+
+Default Layout
+
+Notice that we never specified where each component should appear.
+That's because JPanel uses a FlowLayout by default.
+FlowLayout arranges components from left to right.
+Like words in a sentence: Name: [_______] [Save]
+We'll study layouts in more detail later.
+
+Complete Example
+import javax.swing.*;
+
+public class StudentForm {
+
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame("Student Form");
+
+        JPanel panel = new JPanel();
+
+        JLabel label = new JLabel("Name:");
+
+        JTextField field = new JTextField(15);
+
+        JButton button = new JButton("Register");
+
+        panel.add(label);
+
+        panel.add(field);
+
+        panel.add(button);
+
+        frame.add(panel);
+
+        frame.setSize(400, 200);
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setVisible(true);
+
+    }
+
+}
+Reading Text from a JTextField
+Suppose the user types: Aba
+To retrieve that text: String name = field.getText();
+To change the text programmatically: field.setText("Professor Byte");
+Writing to a JLabel
+You can also change a label's text.
+label.setText("Welcome!");
+Writing to a JTextArea
+area.setText("Java\nProgramming")
+The \n creates a new line.
+

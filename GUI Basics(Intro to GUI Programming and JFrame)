@@ -1,0 +1,176 @@
+So far, every Java program we've written has interacted with the user through the console.
+A GUI replaces the console with windows, buttons, text fields, labels, and other visual components that users can interact with using a mouse and keyboard.
+This topic is very common in introductory Java courses because it introduces event-driven programming, a different way of thinking compared to console applications.
+
+A Graphical User Interface (GUI) is a visual interface that allows users to interact with a program through graphical components such as windows, buttons, menus, labels, and text fields instead of text-based commands.
+
+Console vs GUI
+A console application communicates using text.
+Example: Enter your age:
+         20
+A GUI application communicates visually.
++-----------------------------+
+| Name: [______________]      |
+|                             |
+| [ Submit ]                  |
++-----------------------------+
+Instead of typing commands, the user clicks buttons and fills in fields.
+
+Java GUI Libraries
+Java provides two major GUI libraries.
+1. AWT (Abstract Window Toolkit)
+Package: java.awt
+It was Java's first GUI library.
+Examples: Frame
+          Button
+          TextField
+          Label
+2. Swing
+Package: javax.swing
+Swing is built on top of AWT and provides more powerful, flexible, and platform-independent components.
+Examples: JFrame
+          JButton
+          JLabel
+          JTextField
+          JTextArea
+          JPanel
+For modern introductory Java programming, Swing is generally preferred.
+
+AWT vs Swing
+| AWT                           | Swing                                  |
+| ----------------------------- | -------------------------------------- |
+| Older library                 | Newer library                          |
+| Platform-dependent components | Mostly platform-independent components |
+| Fewer components              | More components                        |
+| Uses `Frame`                  | Uses `JFrame`                          |
+For your exams, remember: Swing extends AWT.
+This means Swing builds upon AWT rather than replacing it completely.
+
+What is a JFrame?
+A JFrame is the main window of a Swing application.
+Everything you see in a Swing application is usually placed inside a JFrame.
+Think of it as the application's container.
+
+Creating a JFrame
+import javax.swing.JFrame;
+
+public class MyWindow {
+
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame();
+
+        frame.setVisible(true);
+
+    }
+
+}
+
+Output: A blank window appears.
+
+Why Doesn't the Program Close?
+If you click the X, the window disappears, but the program may continue running.
+Why? Because you've only hidden the window.
+The Java program itself is still executing.
+To tell Java to terminate the application: frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+Now closing the window also ends the program
+
+Common JFrame Methods
+1. Set the title
+frame.setTitle("Student Management");
+
+2. Set the window size
+frame.setSize(500, 400);
+Width: 500 pixels
+Height: 400 pixels
+
+3. Make it visible
+frame.setVisible(true);
+Without this line: No window appears.
+
+4. Close correctly
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+5. Center the window
+frame.setLocationRelativeTo(null);
+This places the window in the center of the screen.
+
+Putting It Together
+import javax.swing.JFrame;
+
+public class FirstGUI {
+
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame();
+
+        frame.setTitle("My First GUI");
+
+        frame.setSize(400, 300);
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setVisible(true);
+
+    }
+
+}
+
+What is Event-Driven Programming?
+Console programs usually execute from top to bottom.
+Example: Read input
+         ↓
+         Process input
+         ↓
+         Print result
+         ↓
+         End
+A GUI program is different. It waits for the user to do something.
+Examples: Click a button.
+          Type in a text field.
+          Close a window.
+These actions are called events. The program responds only when an event occurs.
+
+Containers and Components
+In Swing: A container holds other components.
+Examples: JFrame
+          JPanel
+A component is something the user interacts with.
+Examples: JButton
+          JLabel
+          JTextField
+          JTextArea
+Visualization: JFrame
+               │
+               └── JPanel
+                     │
+                     ├── JLabel
+                     ├── JTextField
+                     └── JButton
+Notice: Everything ultimately sits inside the JFrame.
+
+Example Code
+import javax.swing.JFrame;
+
+public class JFrameExample {
+
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame();
+
+        frame.setTitle("Welcome Aba");
+
+        frame.setSize(500, 300);
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setVisible(true);
+
+    }
+
+}
+
